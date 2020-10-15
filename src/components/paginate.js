@@ -12,17 +12,13 @@ class Paginate extends PureComponent {
         return(
             
             <nav>
-                <ul className="pagination">
-                    {currentPage > 1 ? <li className="page-item"><a onClick={() => prevPage()} className="page-link" href="#">Prev</a></li> : null}  
+                <div className="pagination">
+                    {currentPage > 1 ? <button onClick={() => prevPage()} className="page-link" href="#">Prev</button> : null}  
                     {pageNumbers.map(num => (
-                    <li className="page-item" key={num}>
-                        <a onClick={() => paginate(num)} className="page-link" href="#">{num}</a>
-                        </li>
+                    <button key={num} onClick={() => paginate(num)} className="page-link" href="#">{num}</button>
                     ))}
-                    <li className="page-item">
-                        <a onClick={() => nextPage()} className="page-link" href="#">Next</a>
-                    </li>
-                </ul>
+                    <button onClick={() => nextPage()} className="page-link" href="#">Next</button>
+                </div>
             </nav>
         )
     }

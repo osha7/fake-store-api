@@ -39,43 +39,6 @@ class Items extends React.Component {
         // console.log(this.state.items)
     }
 
-    // pagination = (items, page, itemsPerPage) => {
-    //     let trimStart = (page - 1) * itemsPerPage
-    //     let trimEnd = trimStart + itemsPerPage
-
-    //     let trimmedData = items.slice(trimStart, trimEnd)
-
-    //     let pages = Math.ceil(items.length / itemsPerPage)
-    //     // this.setState({
-    //         // pages: pages
-    //     // })
-
-    //     return{
-    //         'items': trimmedData,
-    //         'pages': pages
-    //     }
-    // }
-    
-
-
-    // pageButtons = (pages) => {
-    //     console.log('pageButtons', pages)
-    //     // debugger
-    //     let wrapper = document.getElementById('pagination-wrapper')
-    //     if (wrapper){
-    //         wrapper.innerHTML = ''
-    //         for (let page = 1; page <= pages; page ++) {
-    //             // console.log(page)
-    //             wrapper.innerHTML += `<button class="page" value=${page} onClick=pageChange(${page})>${page}</button>`
-    //         }
-    //     }
-    // }
-
-    // pageChange = (pageNumber) => {
-    //     console.log('pageChange', pageNumber)
-
-    // }
-
     render() {
         const {items, currentPage, itemsPerPage, loading} = this.state
         const indexOfLastPost = currentPage * itemsPerPage
@@ -85,34 +48,16 @@ class Items extends React.Component {
         const nextPage = () => this.setState({ currentPage: currentPage + 1 })
         const prevPage = () => this.setState({ currentPage: currentPage - 1 })
 
-        // console.log(this.state.items)
-        // let data = this.pagination(this.state.items, this.state.page, this.state.itemsPerPage)
-        // const itemsArray = this.state.items
-        // const itemsArray = data.items
-        // console.log('Data:', data)
-
         if (this.state.items) {
             return(
                 <>
                     <h1>Items</h1>
                     <a className="filter" onClick={this.handleOnClick}>Womens Collection</a>
-                    {/* <div className='flexbox-container'>
-                            {itemsArray.map(item => (
-                                // console.log(item),
-                                <div key={item.id} className={`flexbox-item flexbox-item-${item.id}`}>
-                                    <div className="item-image"><img src={item.image} /></div>
-
-                                    <div className='h5'><h5>{item.title}</h5></div>
-                                    https://stackoverflow.com/questions/1726630/formatting-a-number-with-exactly-two-decimals-in-javascript
-                                    <div>${item.price.toFixed(2)}</div>
-                                </div>
-                            ))}
-                    </div> */}
+    
                     <div className='flexbox-container'>
                        <Items1 items={currentItems} loading={loading} />
                     </div>
                     <div className="page-button-container">
-                        {/* <div id="pagination-wrapper" onLoad={this.pageButtons(data.pages)}></div> */}
                         <h1>React Pagination</h1>
                         <Paginate itemsPerPage={itemsPerPage} totalItems={items.length} paginate={paginate} nextPage={nextPage} prevPage={prevPage} currentPage={currentPage} />
                     </div>
