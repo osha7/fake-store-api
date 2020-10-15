@@ -5,10 +5,11 @@ class Paginate extends PureComponent {
     render() {
         const { itemsPerPage, totalItems, paginate, nextPage, prevPage, currentPage} = this.props
         const pageNumbers = []
-        for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+        const pages = Math.ceil(totalItems / itemsPerPage)
+        for (let i = 1; i <= pages; i++) {
             pageNumbers.push(i)
         }
-        console.log(currentPage)
+        console.log(pages)
         return(
             
             <nav>
@@ -17,7 +18,8 @@ class Paginate extends PureComponent {
                     {pageNumbers.map(num => (
                     <button key={num} onClick={() => paginate(num)} className="page-link" href="#">{num}</button>
                     ))}
-                    <button onClick={() => nextPage()} className="page-link" href="#">Next</button>
+                    {/* {console.log(currentPage, pages)} */}
+                    {currentPage !== pages ? <button onClick={() => nextPage()} className="page-link" href="#">Next</button> : null}
                 </div>
             </nav>
         )
