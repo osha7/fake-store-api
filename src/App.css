@@ -8,7 +8,8 @@
   flex-wrap: wrap;
   /* main axis: */
   /* justify-content: flex-start; */
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: center;
   /* cross axis: */
   align-items: center;
   /* align-content: center; */
@@ -35,3 +36,8 @@
 /* main axis - horizontal line of page, direction of layout */
 /* cross axis - vertical line of page */
 /* style based on axis */
+
+.filter:hover {
+  text-decoration: underline;
+  cursor: default;
+}

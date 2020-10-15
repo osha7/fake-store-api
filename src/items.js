@@ -19,6 +19,18 @@ class Items extends React.Component {
         })
     }
 
+    handleOnClick = () => {
+        console.log("here")
+        // debugger
+        setTimeout(() => {  setNewState(); }, 750);
+        let setNewState = () => {
+            this.setState({
+                items: this.state.items.filter(item => item.category.includes("women"))
+            })
+        }
+        console.log(this.state.items)
+    }
+
     render() {
         console.log(this.state.items)
         const itemsArray = this.state.items
@@ -26,6 +38,7 @@ class Items extends React.Component {
             return(
                 <>
                     <h1>Items</h1>
+                    <a className="filter" onClick={this.handleOnClick}>Womens Collection</a>
                     <div className='flexbox-container'>
                         
                             {itemsArray.map(item => (
