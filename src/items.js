@@ -8,7 +8,7 @@ class Items extends React.Component {
         items: [],
         loading: false,
         currentPage: 1,
-        postsPerPage: 5,
+        itemsPerPage: 5,
     }
     
     componentDidMount = () => {
@@ -39,13 +39,13 @@ class Items extends React.Component {
         // console.log(this.state.items)
     }
 
-    // pagination = (items, page, postsPerPage) => {
-    //     let trimStart = (page - 1) * postsPerPage
-    //     let trimEnd = trimStart + postsPerPage
+    // pagination = (items, page, itemsPerPage) => {
+    //     let trimStart = (page - 1) * itemsPerPage
+    //     let trimEnd = trimStart + itemsPerPage
 
     //     let trimmedData = items.slice(trimStart, trimEnd)
 
-    //     let pages = Math.ceil(items.length / postsPerPage)
+    //     let pages = Math.ceil(items.length / itemsPerPage)
     //     // this.setState({
     //         // pages: pages
     //     // })
@@ -77,12 +77,16 @@ class Items extends React.Component {
     // }
 
     render() {
-        const {items, currentPage, postsPerPage} = this.state
-        const indexOfLastPost = currentPage * postsPerPage
-        const indexOfFirstPost = indexOfLastPost - postsPerPage
+        const {items, currentPage, itemsPerPage, loading} = this.state
+        const indexOfLastPost = currentPage * itemsPerPage
+        const indexOfFirstPost = indexOfLastPost - itemsPerPage
         const currentItems = items.slice(indexOfFirstPost, indexOfLastPost)
+        const paginate = pageNum => this.setState({ currentPage: pageNum })
+        const nextPage = () => this.setState({ currentPage: currentPage + 1 })
+        const prevPage = () => this.setState({ currentPage: currentPage - 1 })
+
         // console.log(this.state.items)
-        // let data = this.pagination(this.state.items, this.state.page, this.state.postsPerPage)
+        // let data = this.pagination(this.state.items, this.state.page, this.state.itemsPerPage)
         // const itemsArray = this.state.items
         // const itemsArray = data.items
         // console.log('Data:', data)
@@ -105,11 +109,12 @@ class Items extends React.Component {
                             ))}
                     </div> */}
                     <div className='flexbox-container'>
-                       <Items1 items={currentItems} loading={this.state.loading} />
+                       <Items1 items={currentItems} loading={loading} />
                     </div>
                     <div className="page-button-container">
                         {/* <div id="pagination-wrapper" onLoad={this.pageButtons(data.pages)}></div> */}
                         <h1>React Pagination</h1>
+                        <Paginate itemsPerPage={itemsPerPage} totalItems={items.length} paginate={paginate} nextPage={nextPage} prevPage={prevPage} currentPage={currentPage} />
                     </div>
                 </>
             )

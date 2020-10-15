@@ -41,3 +41,7 @@
   text-decoration: underline;
   cursor: default;
 }
+
+ul {
+  list-style-type:none;
+}
